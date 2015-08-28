@@ -154,7 +154,7 @@ function getNoticias() {
   var n=0;  
     $.ajax({
       url: direccion+'actions/getInfo.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       success: function(response){  
@@ -192,7 +192,7 @@ function getNoticiaPublicada(argument) {
     }
     $.ajax({
       url: direccion+'actions/getNoticia.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       data: datos,
@@ -221,7 +221,7 @@ function getNoticiaPublicada(argument) {
 function getAlineacion() {  
     $.ajax({
       url: direccion+'actions/getAlineacion.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       //data: datos,
@@ -261,7 +261,7 @@ function getAlineacion() {
 function getSuplentes() {  
     $.ajax({
       url: direccion+'actions/getSuplentes.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       //data: datos,
@@ -284,7 +284,7 @@ function getSuplentes() {
 function getTwitter(){
   $.ajax({
       url: direccion+'actions/apiTwitter.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       //data: datos,
@@ -309,7 +309,7 @@ function getTwitter(){
 function getVideos() { 
     $.ajax({
       url: direccion+'actions/getVideos.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       success: function(response){  
@@ -332,7 +332,7 @@ function getVideos() {
 function cargoUnidadEquipo(){
     $.ajax({
       url: direccion+'actions/getPlantilla.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       success: function(response){  
@@ -362,7 +362,7 @@ function cargoCampeonato(){
   $('.tabla_posicionesEtapa2 tbody').empty();
     $.ajax({
       url: direccion+'actions/getEstadisticas.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       success: function(response){  
@@ -414,7 +414,7 @@ function getPartidoProximo(argument){
     }
     $.ajax({
       url: direccion+'actions/getPartidoFecha.php',
-      type: "POST",
+      type: "GET",
       cache: true,
       dataType: "json",
       data: datos,
@@ -437,8 +437,7 @@ function getPartidoProximo(argument){
     }).done(function() {
       $('.cancha-vs').slick({
         infinite: false,
-        autoplay: true,
-        speed: 300
+        autoplay: true
       });
 
     });    
@@ -448,3 +447,14 @@ function getPartidoProximo(argument){
 /*********************************************************************/
 /* FUNCIONES */
 /*********************************************************************/
+
+$(document).on('pagebeforeshow', '#proximopartido', function(){  
+ // $('.cancha-vs').css('display','none'); 
+  setTimeout(function(){
+    //$('.cancha-vs').css('display','block');
+    $('.cancha-vs').slick({
+        infinite: false,
+        autoplay: true
+      });
+  },3000);
+ });

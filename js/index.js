@@ -171,7 +171,7 @@ function getNoticias() {
             picture_quantity = value.picture_quantity;
             
             var titulo = value.titulo;
-            titulo = titulo.substring(0, 45);
+            titulo = titulo.substring(0, 40);
 
             var extracto = value.contenido;
             extracto = extracto.substring(0, 80);

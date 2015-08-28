@@ -171,11 +171,11 @@ function getNoticias() {
             picture_quantity = value.picture_quantity;
             
             var titulo = value.titulo;
-            titulo = titulo.substring(0, 35);
+            titulo = titulo.substring(0, 45);
 
             var extracto = value.contenido;
-            extracto = extracto.substring(0, 70);
-            $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-4 col-sm-4 col-xs-12">'+dia+'-'+mes+'-'+anio+' </div> <div class="mini col-md-8 col-sm-8 col-xs-12"><strong>'+categoria+'</strong></div> <div class="col-sm-11 col-xs-11 col-md-11"> <div class="titulo_noticia">'+titulo+'... </div><p class="extracto">'+extracto+'... </p> </div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');
+            extracto = extracto.substring(0, 80);
+            $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-4 col-sm-4 col-xs-12">'+dia+'-'+mes+'-'+anio+' </div> <div class="mini col-md-8 col-sm-8 col-xs-12"><strong>'+categoria+'</strong></div> <div class="col-sm-12 col-xs-12 col-md-12"> <div class="titulo_noticia">'+titulo+'... </div><p class="extracto">'+extracto+'... </p> </div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');
             n++;
             if( (n == '4') || (n == '10') || (n == '18') ){
               $('.noticias').append('<li class="publicidad_noticia col-sm-12 col-xs-12 col-md-12"><a href="#"><div class="ads-noticias1"></div></a></li>');

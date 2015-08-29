@@ -299,7 +299,7 @@ function getTwitter(){
             imagen = value.imagen;
             url = value.url;
             texto = value.texto;
-            $('.minutoTwitter').append('<div class="col-md-2 col-xs-2 col-sm-2"><a href="https://twitter.com/'+url+'"><img src="'+imagen+'" /></a></div><div class="col-md-10 col-xs-10 col-sm-10"><h3><a href="https://twitter.com/'+url+'">'+url+'</a></h3><p>'+texto+'</p></div>');
+            $('.minutoTwitter').append('<div class="row"><div class="col-md-2 col-xs-2 col-sm-2"><a href="https://twitter.com/'+url+'"><img src="'+imagen+'" /></a></div><div class="col-md-10 col-xs-10 col-sm-10"><h4><a href="https://twitter.com/'+url+'">'+url+'</a></h4><p>'+texto+'</p></div></div>');
             
           });
         }              
@@ -431,7 +431,7 @@ function getPartidoProximo(argument){
             campeonato = value.campeonato;
             equipo2 = value.equipo2;
             estadio = value.estadio;
-            $('.cancha-vs').append('<div> <div class="col-sm-12 col-xs-12 col-md-12 text-center"> <h4>Campeonato Ecuatoriano de Fútbol</h4> <p>Fecha: '+ fecha +' |  Hora: '+ hora +'</p> </div> <div class="name_Equipo1 aumento-left name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo1+'</div> <div class="col-sm-2 col-xs-2 col-md-2"></div> <div class="name_Equipo2 aumento-right name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo1+'</div> <div class="equipo1 col-xs-5 col-md-5 col-sm-5 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo1+'.png" /> </div> <div class="col-xs-2 col-md-2 col-sm-2 text-center centroV"> <span>VS.</span> </div> <div class="equipo2 col-xs-5 col-md-5 col-sm-5 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo2+'.png" /> </div> <div class="espacio col-md-12 col-xs-12 text-center"> <h5>Estadio <strong> '+estadio+'</strong></h5> </div> </div>');
+            $('.cancha-vs').append('<div> <div class="col-sm-12 col-xs-12 col-md-12 text-center"> <h4>Campeonato Ecuatoriano de Fútbol</h4> <p>Fecha: '+ fecha +' |  Hora: '+ hora +'</p> </div> <div class="name_Equipo1 aumento-left name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo1+'</div> <div class="col-sm-2 col-xs-2 col-md-2"></div> <div class="name_Equipo2 aumento-right name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo1+'</div> <div class="equipo1 col-xs-4 col-md-4 col-sm-4 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo1+'.png" /> </div> <div class="col-xs-3 col-md-3 col-sm-3 text-center centroV"> <span>VS.</span> </div> <div class="equipo2 col-xs-5 col-md-5 col-sm-5 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo2+'.png" /> </div> <div class="espacio col-md-12 col-xs-12 text-center"> <h5>Estadio <strong> '+estadio+'</strong></h5> </div> </div>');
           });
         }              
       },

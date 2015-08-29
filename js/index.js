@@ -41,10 +41,10 @@ $( document ).ready(function() {
       getTwitter();
 
      
-      var tamanPantallaHeight = screen.height;
-
-      $('#mypanel .ui-panel-inner').css('height', screen.height);
-      $('#mypanel ul').css('height', screen.height-200);
+      var tamanPantallaHeight = $(window).height();
+      alert()
+      $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
+      $('#mypanel ul').css('height', tamanPantallaHeight-200);
 
 
     //ANIMACIONES

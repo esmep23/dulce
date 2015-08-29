@@ -41,8 +41,8 @@ $( document ).ready(function() {
       getTwitter();
 
      
-      var tamanPantallaHeight = $(window).height();
-      alert()
+      var tamanPantallaHeight = $(window).height()+100;
+      
       $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
       $('#mypanel ul').css('height', tamanPantallaHeight-200);
 

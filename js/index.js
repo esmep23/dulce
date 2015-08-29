@@ -41,6 +41,11 @@ $( document ).ready(function() {
       getTwitter();
 
      
+      var tamanPantallaHeight = screen.height;
+
+      $('#mypanel .ui-panel-inner').css('height', screen.height);
+      $('#mypanel ul').css('height', screen.height-200);
+
 
     //ANIMACIONES
     $('.sliderVideo').slick({

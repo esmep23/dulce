@@ -31,18 +31,28 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     navigator.splashscreen.show();
 }
+
+
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-      var testObject = { 'one': 1, 'two': 2, 'three': 3 };
 
+/*
+var testObject = { 'one': 1, 'two': 2, 'three': 3 };
 // Put the object into storage
 localStorage.setItem('testObject', JSON.stringify(testObject));
-
 // Retrieve the object from storage
 var retrievedObject = localStorage.getItem('testObject');
-
 alert('retrievedObject: ', JSON.parse(retrievedObject));
+*/
 
+if(localStorage.getItem('token')){
+  $.mobile.changePage( "#principal", {
+          transition: "fade",
+          reverse: false,
+          changeHash: false
+        });  
+}
+//alert('retrievedObject: ', JSON.parse(getObjToken));
       getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
@@ -94,16 +104,7 @@ alert('retrievedObject: ', JSON.parse(retrievedObject));
     $('.cancha-vs').css('visibility', 'hidden');
     $('.slider-for').css('visibility', 'hidden');
     $('.slider-nav').css('visibility', 'hidden');
-   /* setTimeout(function(){
-      alert('9999999999999999999999');
-      $('.cancha-vs').css('visibility', 'visible');
-      $('.cancha-vs').slick({
-        infinite: true,
-        autoplay: true
-      });
-     },2000);
-*/
-    
+ 
 
     //SONIDOS
           //array sounds
@@ -159,6 +160,9 @@ alert('retrievedObject: ', JSON.parse(retrievedObject));
       
       //escondo objetos
       $('.pause_button').hide();
+
+
+
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -370,6 +374,46 @@ function getVideos() {
     });     
 }
 */
+function guardoDatos(){
+  nombre = $('#name').val();
+  apellido = $('#lastname').val();
+  pais = $('#country').val();
+  ciudad = $('#city').val();
+  telefono = $('#phone').val();
+  email = $('#email').val();
+
+  //alert(nombre +'-'+ apellido +'-'+ pais +'-'+ ciudad +'-'+ telefono +'-'+ email);
+  var datos ={
+      'nombre': nombre,
+      'apellido': apellido,
+      'pais': pais,
+      'ciudad': ciudad,
+      'telefono': telefono,
+      'email': email
+    }
+    $.ajax({
+      url: direccion+'actions/guardoRegistro.php',
+      type: "POST",
+      cache: true,
+      dataType: "json",
+      data: datos,
+      success: function(response){  
+        //alert(response); 
+        var obj = phone;
+        localStorage.setItem('token', JSON.stringify(obj));
+
+        $.mobile.changePage( "#principal", {
+          transition: "fade",
+          reverse: false,
+          changeHash: false
+        });         
+      },
+      error : function(error){     
+          //alert(error);
+      }
+
+    });  
+}
 function cargoUnidadEquipo(){
     $.ajax({
       url: direccion+'actions/getPlantilla.php',

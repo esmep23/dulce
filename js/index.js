@@ -50,27 +50,22 @@ $( document ).ready(function() {
 
     //ANIMACIONES
     $('.sliderVideo').slick({
-      //autoplay: true,
+      autoplay: true,
       dots: true
     });
-
-
-    $('.slider-for').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      fade: true,
-      asNavFor: '.slider-nav'
-    });
-    $('.slider-nav').slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      asNavFor: '.slider-for',
-      dots: false,
-      autoplay: true,
-      centerMode: true,
-      focusOnSelect: true
-    });
+    $('.cancha-vs').css('visibility', 'hidden');
+    $('.slider-for').css('visibility', 'hidden');
+    $('.slider-nav').css('visibility', 'hidden');
+   /* setTimeout(function(){
+      alert('9999999999999999999999');
+      $('.cancha-vs').css('visibility', 'visible');
+      $('.cancha-vs').slick({
+        infinite: true,
+        autoplay: true
+      });
+     },2000);
+*/
+    
 
     //SONIDOS
           //array sounds
@@ -446,11 +441,6 @@ function getPartidoProximo(argument){
       error : function(error){     
           //alert(error);
       }
-    }).done(function() {
-      $('.cancha-vs').slick({
-        infinite: false,
-        autoplay: true
-      });
 
     });    
 }
@@ -461,12 +451,39 @@ function getPartidoProximo(argument){
 /*********************************************************************/
 
 $(document).on('pagebeforeshow', '#proximopartido', function(){  
- // $('.cancha-vs').css('display','none'); 
- /* setTimeout(function(){
-    //$('.cancha-vs').css('display','block');
-    $('.cancha-vs').slick({
-        infinite: false,
+    $('.cancha-vs').css('visibility', 'hidden');
+    setTimeout(function(){
+    //  alert('9999999999999999999999');
+      $('.cancha-vs').css('visibility', 'visible');
+      $('.cancha-vs').slick({
+        infinite: true,
         autoplay: true
       });
-  },3000);*/
+     },2000);
+ });
+
+$(document).on('pagebeforeshow', '#descargas', function(){  
+    $('.slider-for').css('visibility', 'hidden');
+    $('.slider-nav').css('visibility', 'hidden');
+    setTimeout(function(){
+      $('.slider-for').css('visibility', 'visible');
+      $('.slider-nav').css('visibility', 'visible');
+     // alert('9999999999999999999999');
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        autoplay: true,
+        centerMode: true,
+        focusOnSelect: true
+      });
+     },2000);
  });

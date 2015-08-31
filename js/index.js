@@ -14,6 +14,7 @@ var ringtone = 3;
 var audio;
 var h1var=0;
 var h2=0;
+var arrayEquipos = new Array();
 var arrayPuntajesPJ = new Array();
 var arrayPuntajesGD = new Array();
 var arrayPuntajesPTS = new Array();
@@ -65,7 +66,7 @@ $( document ).ready(function() {
       slidesToShow: 3,
       slidesToScroll: 1,
       asNavFor: '.slider-for',
-      dots: true,
+      dots: false,
       autoplay: true,
       centerMode: true,
       focusOnSelect: true
@@ -175,12 +176,10 @@ function getNoticias() {
             categoria = value.category;
             picture_quantity = value.picture_quantity;
             
-            var titulo = value.titulo;
-            titulo = titulo.substring(0, 40);
-
+          
             var extracto = value.contenido;
             extracto = extracto.substring(0, 80);
-            $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-4 col-sm-4 col-xs-4 text-left">'+dia+'-'+mes+'-'+anio+' </div> <div class="mini col-md-8 col-sm-8 col-xs-8 text-right espacioRight"><strong>'+categoria+'</strong></div> <div class="col-sm-12 col-xs-12 col-md-12"> <div class="titulo_noticia">'+titulo+'... </div><p class="extracto">'+extracto+'... </p> </div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');
+            $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-12 col-sm-12 col-xs-12 text-left">'+dia+'-'+mes+'-'+anio+' </div> <div class="col-sm-10 col-xs-10 col-md-10"> <div class="titulo_noticia">'+titular+' </div></div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');
             n++;
             if( (n == '4') || (n == '10') || (n == '18') ){
               $('.noticias').append('<li class="publicidad_noticia col-sm-12 col-xs-12 col-md-12"><a href="#"><div class="ads-noticias1"></div></a></li>');
@@ -390,20 +389,24 @@ function cargoCampeonato(){
             fase = value.fase;
             
             if(fase == 'Serie A Fase 1'){
+
+              arrayEquipos.push(equipo);
               arrayPuntajesPJ.push(pj);
               arrayPuntajesGD.push(gd);
               arrayPuntajesPTS.push(pts);
               $('.posicionesEtapa1').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li><li class="col-md-2 col-xs-2 col-sm-2 text-left">  '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+pj+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+gd+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+pts+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
               console.log(arrayPuntajesPJ);
+
             }
             if(fase == 'Serie A Fase 2'){
+                var h1var = arrayEquipos.indexOf(equipo);
                 $('.posicionesEtapa2').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li><li class="col-md-2 col-xs-2 col-sm-2 text-left">  '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+pj+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+gd+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+pts+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
                 arrayPuntajesPJ[h1var] = parseInt(arrayPuntajesPJ[h1var]) + parseInt(pj);
                 arrayPuntajesGD[h1var] = parseInt(arrayPuntajesGD[h1var]) + parseInt(gd);
                 arrayPuntajesPTS[h1var] = parseInt(arrayPuntajesPTS[h1var]) + parseInt(pts);
                 
                 $('.posicionesAcumulada').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li> <li class="col-md-2 col-xs-2 col-sm-2 text-left"> '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesPJ[h1var]+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesGD[h1var]+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+arrayPuntajesPTS[h1var]+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
-                h1var++;
+                //h1var++;
             }
 
              
@@ -459,11 +462,11 @@ function getPartidoProximo(argument){
 
 $(document).on('pagebeforeshow', '#proximopartido', function(){  
  // $('.cancha-vs').css('display','none'); 
-  setTimeout(function(){
+ /* setTimeout(function(){
     //$('.cancha-vs').css('display','block');
     $('.cancha-vs').slick({
         infinite: false,
         autoplay: true
       });
-  },3000);
+  },3000);*/
  });

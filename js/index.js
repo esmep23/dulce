@@ -27,10 +27,22 @@ var mesNoticia;
 /////////////////////////////////////////////////////////////
 partidoActual = 8;
 
-
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    navigator.splashscreen.show();
+}
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-      
+      var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+
+// Put the object into storage
+localStorage.setItem('testObject', JSON.stringify(testObject));
+
+// Retrieve the object from storage
+var retrievedObject = localStorage.getItem('testObject');
+
+alert('retrievedObject: ', JSON.parse(retrievedObject));
+
       getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
@@ -41,7 +53,33 @@ $( document ).ready(function() {
       getSuplentes();
       getTwitter();
 
-     
+      $('#tabs2').click(function(e) {
+        e.preventDefault();
+        $('.slider-for').css('visibility', 'hidden');
+        $('.slider-nav').css('visibility', 'hidden');
+        setTimeout(function(){
+          $('.slider-for').css('visibility', 'visible');
+          $('.slider-nav').css('visibility', 'visible');
+         // alert('9999999999999999999999');
+          $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+          });
+          $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            autoplay: true,
+            centerMode: true,
+            focusOnSelect: true
+          });
+         },2000);
+      });
+
       var tamanPantallaHeight = $(window).height()+100;
       
       $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);

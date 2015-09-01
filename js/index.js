@@ -37,7 +37,7 @@ function onDeviceReady() {
 $( document ).ready(function() {
 
   var tamanPantallaHeight = $(window).height()+100;
-  $('#inicio > div').css('height',tamanPantallaHeight-100);
+  $('#inicio > div').css('height',tamanPantallaHeight);
   $('#maximun').css('height',tamanPantallaHeight-100);
   $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
   $('#mypanel ul').css('height', tamanPantallaHeight-200);

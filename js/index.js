@@ -35,17 +35,9 @@ function onDeviceReady() {
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-
-/*
-var testObject = { 'one': 1, 'two': 2, 'three': 3 };
-// Put the object into storage
-localStorage.setItem('testObject', JSON.stringify(testObject));
-// Retrieve the object from storage
-var retrievedObject = localStorage.getItem('testObject');
-alert('retrievedObject: ', JSON.parse(retrievedObject));
-*/
-alert(var x = document.cookie);
-if(document.cookie)){
+var x = document.cookie;
+alert(x);
+if(document.cookie){
   $.mobile.changePage( "#principal", {
           transition: "fade",
           reverse: false,

@@ -41,8 +41,7 @@ if(value){
           transition: "fade"
         });  
 }
-//alert('retrievedObject: ', JSON.parse(getObjToken));
-      getNoticias();
+     getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
       $( "#tabs" ).tabs();
@@ -154,7 +153,19 @@ if(value){
 
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function descargo(argument){
+  var imagePath = argument;             // Mention the complete path to your image. If it contains under multiple folder then mention the path from level "www" to the level your image contains with its name including its extension.
+  var imageTitle = "bsc news";                     // Set title of your choice.
+  var folderName = "PluginImages";                  // Set folder Name of your choice. 
+  var success = function() { alert("Success"); };           // Do something on success return.
+  var error = function(message) { alert("Oopsie! " + message); };   // Do something on error return.
 
+  // For setting wallpaper & saving image
+  wallpaper.setImage(imagePath, imageTitle, folderName, success, error);
+
+  // For saving image
+  wallpaper.saveImage(imagePath, imageTitle, folderName, success, error); 
+}
 function reproduzcoAudio(){
   $('.play_button').hide();
   $('.pause_button').show();

@@ -399,7 +399,7 @@ function guardoDatos(){
       data: datos,
       success: function(response){  
         //alert(response); 
-        var obj = phone;
+        var obj = telefono;
         localStorage.setItem('token', JSON.stringify(obj));
         alert(localStorage.getItem('token'));
         $.mobile.changePage("#principal");

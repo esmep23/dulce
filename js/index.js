@@ -154,11 +154,11 @@ if(value){
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function descargo(argument){
-  alert(argument);
+  //alert(argument);
   var imagePath = argument;             // Mention the complete path to your image. If it contains under multiple folder then mention the path from level "www" to the level your image contains with its name including its extension.
   var imageTitle = "bsc news";                     // Set title of your choice.
   var folderName = "PluginImages";                  // Set folder Name of your choice. 
-  var success = function() { alert("Success"); };           // Do something on success return.
+  var success = function() { alert("Wallpaper Instalado con Éxito"); };           // Do something on success return.
   var error = function(message) { alert("Oopsie! " + message); };   // Do something on error return.
 
   // For setting wallpaper & saving image
@@ -167,6 +167,25 @@ function descargo(argument){
   // For saving image
   wallpaper.saveImage(imagePath, imageTitle, folderName, success, error); 
 }
+
+function ring(argument, nameRing)
+{
+  alert(argument);
+alert(nameRing);
+var fileTransfer = new FileTransfer();
+fileTransfer.download(
+    argument,
+    "file://sdcard/Download/"+nameRing,
+    function(entry) {
+        alert("Sound downloaded!");
+    },
+    function(error) {
+        alert("download error source " + error.source);
+        alert("download error target " + error.target);
+        alert("upload error code" + error.code);
+    });
+}   
+
 function reproduzcoAudio(){
   $('.play_button').hide();
   $('.pause_button').show();

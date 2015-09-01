@@ -1,54 +1,49 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta name="viewport" content="width=320; user-scalable=no" />
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>Image Download Demo</title>
-
-<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
-<script type="text/javascript" charset="utf-8">
-//Global instance of DirectoryEntry for our data
-var DATADIR;
-
-//Loaded my file system, now let's get a directory entry for where I'll store my crap
-function onFSSuccess(fileSystem) {
-fileSystem.root.getDirectory("Android/data/com.camden.imagedownloaddemo",{create:true},gotDir,onError);
-}
-
-//The directory entry callback
-function gotDir(d){
-DATADIR = d;
-var reader = DATADIR.createReader();
-reader.readEntries(gotFiles,onError);
-}
-
-//Result of reading my directory
-function gotFiles(entries) {
-console.log("The dir has "+entries.length+" entries.");
-for (var i=0; i<entries.length; i++) {
-console.log(entries[i].name+' '+entries[i].isDirectory);
-}
-}
-
-function onError(e){
-console.log("ERROR");
-console.log(JSON.stringify(e));
-}
-
-function onDeviceReady() {
-window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
-}
-
-function init() {
-document.addEventListener("deviceready", onDeviceReady, true);
-}
-</script>
-
-</head>
-<body onload="init();" >
-<h2>Image Download Demo</h2>
-
-<div id="status"></div>
-
-</body>
-</html>
+ <script type="text/javascript" charset="utf-8">  
+       // Wait for Cordova to load  
+    document.addEventListener("deviceready", onDeviceReady, false);  
+    // Cordova is ready  
+    function onDeviceReady() {  
+      alert("Going to start download");  
+      downloadFile();  
+    }  
+     function downloadFile(){  
+       window.requestFileSystem(  
+                    LocalFileSystem.PERSISTENT, 0,  
+                    function onFileSystemSuccess(fileSystem) {  
+                    fileSystem.root.getFile(  
+                                "dummy.html", {create: true, exclusive: false},  
+                                function gotFileEntry(fileEntry){  
+                                var sPath = fileEntry.fullPath.replace("dummy.html","");  
+                                var fileTransfer = new FileTransfer();  
+                                fileEntry.remove();  
+                                fileTransfer.download(  
+                                           "https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/download.php?img=screen2.png",  
+                                           sPath + "theFile.pdf",  
+                                           function(theFile) {  
+                                           console.log("download complete: " + theFile.toURI());  
+                                           showLink(theFile.toURI());  
+                                           },  
+                                           function(error) {  
+                                           console.log("download error source " + error.source);  
+                                           console.log("download error target " + error.target);  
+                                           console.log("upload error code: " + error.code);  
+                                           }  
+                                           );  
+                                },  
+                                fail);  
+                    },  
+                    fail);  
+     }  
+     function showLink(url){  
+       alert(url);  
+       var divEl = document.getElementById("deviceready");  
+       var aElem = document.createElement("a");  
+       aElem.setAttribute("target", "_blank");  
+       aElem.setAttribute("href", url);  
+       aElem.appendChild(document.createTextNode("Ready! Click To Open."))  
+       divEl.appendChild(aElem);  
+     }  
+     function fail(evt) {  
+       console.log(evt.target.error.code);  
+     }  
+ </script> 

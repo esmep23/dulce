@@ -36,6 +36,15 @@ function onDeviceReady() {
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
 
+$('#inicio > div').videoBG({
+    position:"fixed",
+    zIndex:1,
+    mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
+    ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
+    webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
+    poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
+    opacity:0.5
+});
 
 
   var value = localStorage.getItem('token');

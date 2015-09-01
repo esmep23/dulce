@@ -154,6 +154,7 @@ if(value){
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function descargo(argument){
+  alert(argument);
   var imagePath = argument;             // Mention the complete path to your image. If it contains under multiple folder then mention the path from level "www" to the level your image contains with its name including its extension.
   var imageTitle = "bsc news";                     // Set title of your choice.
   var folderName = "PluginImages";                  // Set folder Name of your choice. 

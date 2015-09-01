@@ -35,10 +35,19 @@
 
 	<div data-role="content">
 		<div id="avanzoRegistro"><a href="#registro"><span>REGISTRARSE</span></a></div>
-		<video width="100%" id="maximun" poster="http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg" preload="none" autoplay="true" loop="true">
+		<video width="100%" id="maximun" class="maximun" poster="http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg" preload="none" autoplay="true" loop="true">
 			<source src="http://www.barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4" type="video/mp4">
 		</video>
-
+		<script type="text/javascript">
+			var vid = document.getElementById("#maximun");
+//this did the trick 
+vid.loop = false;
+vid.addEventListener('ended', function() { 
+    vid.currentTime=0.1;
+    vid.play();
+}, false);
+vid.play();
+		</script>
 	</div><!-- /content -->
 
 </div><!-- /page -->

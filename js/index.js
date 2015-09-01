@@ -35,7 +35,9 @@ function onDeviceReady() {
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-  
+
+
+
   var value = localStorage.getItem('token');
   if(value){
     $.mobile.changePage( "#principal", {

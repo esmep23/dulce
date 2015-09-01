@@ -38,9 +38,7 @@ $( document ).ready(function() {
 var value = localStorage.getItem('token');
 if(value){
   $.mobile.changePage( "#principal", {
-          transition: "fade",
-          reverse: false,
-          changeHash: false
+          transition: "fade"
         });  
 }
 //alert('retrievedObject: ', JSON.parse(getObjToken));

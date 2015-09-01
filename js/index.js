@@ -26,11 +26,11 @@ var mesNoticia;
 //CARGO DE BASE
 /////////////////////////////////////////////////////////////
 partidoActual = 8;
-
+/*
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     navigator.splashscreen.show();
-}
+}*/
 
 
 /////////////////////////////////////////////////////////

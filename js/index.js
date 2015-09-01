@@ -35,12 +35,13 @@ function onDeviceReady() {
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-var value = localStorage.getItem('token');
-if(value){
-  $.mobile.changePage( "#principal", {
+  
+  var value = localStorage.getItem('token');
+  if(value){
+    $.mobile.changePage( "#principal", {
           transition: "fade"
         });  
-}
+  }
      getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
@@ -79,7 +80,7 @@ if(value){
       });
 
       var tamanPantallaHeight = $(window).height()+100;
-      
+      $('#maximun').css('height',tamanPantallaHeight-100);
       $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
       $('#mypanel ul').css('height', tamanPantallaHeight-200);
 
@@ -169,13 +170,13 @@ function descargo(argument){
 }
 
 function ring(argument, nameRing)
-{
+{/*
   alert(argument);
 alert(nameRing);
 var fileTransfer = new FileTransfer();
 fileTransfer.download(
     argument,
-    "file://0/Download/"+nameRing,
+    "file://Download/"+nameRing,
     function(entry) {
         alert("Sound downloaded!");
     },
@@ -183,7 +184,7 @@ fileTransfer.download(
         alert("download error source " + error.source);
         alert("download error target " + error.target);
         alert("upload error code" + error.code);
-    });
+    });*/
 }   
 
 function reproduzcoAudio(){
@@ -224,7 +225,7 @@ function getNoticias() {
         if(response!=null && response!='' && response!='[]'){ 
           $.each(response,function(key,value){ 
             codigo = value.id;
-            titular = value.titulo; 
+            //titular = value.titulo; 
             contenido = value.contenido; 
             anio = value.year;
             mes =value.month;
@@ -233,7 +234,9 @@ function getNoticias() {
             categoria = value.category;
             picture_quantity = value.picture_quantity;
             
-          
+            var titular = value.titulo;
+            titular = titular.substring(0, 40);
+
             var extracto = value.contenido;
             extracto = extracto.substring(0, 80);
             $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-12 col-sm-12 col-xs-12 text-left">'+dia+'-'+mes+'-'+anio+' </div> <div class="col-sm-10 col-xs-10 col-md-10"> <div class="titulo_noticia">'+titular+' </div></div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');

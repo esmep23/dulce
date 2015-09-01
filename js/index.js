@@ -44,7 +44,7 @@ localStorage.setItem('testObject', JSON.stringify(testObject));
 var retrievedObject = localStorage.getItem('testObject');
 alert('retrievedObject: ', JSON.parse(retrievedObject));
 */
-
+alert(localStorage.getItem('token'));
 if(localStorage.getItem('token')){
   $.mobile.changePage( "#principal", {
           transition: "fade",

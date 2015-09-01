@@ -175,7 +175,7 @@ alert(nameRing);
 var fileTransfer = new FileTransfer();
 fileTransfer.download(
     argument,
-    "file://sdcard/Download/"+nameRing,
+    "file://0/Download/"+nameRing,
     function(entry) {
         alert("Sound downloaded!");
     },

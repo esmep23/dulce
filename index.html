@@ -1,53 +1,54 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <title>FileWriter Example</title>
+<head>
+<meta name="viewport" content="width=320; user-scalable=no" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Image Download Demo</title>
 
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-    <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+//Global instance of DirectoryEntry for our data
+var DATADIR;
 
-    // Wait for PhoneGap to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
+//Loaded my file system, now let's get a directory entry for where I'll store my crap
+function onFSSuccess(fileSystem) {
+fileSystem.root.getDirectory("Android/data/com.camden.imagedownloaddemo",{create:true},gotDir,onError);
+}
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-    }
+//The directory entry callback
+function gotDir(d){
+DATADIR = d;
+var reader = DATADIR.createReader();
+reader.readEntries(gotFiles,onError);
+}
 
-    function gotFS(fileSystem) {
-        fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
-    }
+//Result of reading my directory
+function gotFiles(entries) {
+console.log("The dir has "+entries.length+" entries.");
+for (var i=0; i<entries.length; i++) {
+console.log(entries[i].name+' '+entries[i].isDirectory);
+}
+}
 
-    function gotFileEntry(fileEntry) {
-        fileEntry.createWriter(gotFileWriter, fail);
-    }
+function onError(e){
+console.log("ERROR");
+console.log(JSON.stringify(e));
+}
 
-    function gotFileWriter(writer) {
-        writer.onwriteend = function(evt) {
-            console.log("contents of file now 'some sample text'");
-            writer.truncate(11);  
-            writer.onwriteend = function(evt) {
-                console.log("contents of file now 'some sample'");
-                writer.seek(4);
-                writer.write(" different text");
-                writer.onwriteend = function(evt){
-                    console.log("contents of file now 'some different text'");
-                }
-            };
-        };
-        writer.write("some sample text");
-    }
+function onDeviceReady() {
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
+}
 
-    function fail(error) {
-        console.log(error.code);
-    }
+function init() {
+document.addEventListener("deviceready", onDeviceReady, true);
+}
+</script>
 
-    </script>
-  </head>
-  <body>
-    <h1>Example</h1>
-    <p>Write File</p>
-  </body>
+</head>
+<body onload="init();" >
+<h2>Image Download Demo</h2>
+
+<div id="status"></div>
+
+</body>
 </html>

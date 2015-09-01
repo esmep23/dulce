@@ -35,9 +35,8 @@ function onDeviceReady() {
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-var x = document.cookie;
-alert(x);
-if(document.cookie){
+var value = localStorage.getItem('token');
+if(value){
   $.mobile.changePage( "#principal", {
           transition: "fade",
           reverse: false,
@@ -392,9 +391,8 @@ function guardoDatos(){
       success: function(response){  
         //alert(response); 
         var obj = telefono;
-        document.cookie="token="+obj;
-        //localStorage.setItem('token', JSON.stringify(obj));
-        //alert(localStorage.getItem('token'));
+        localStorage.setItem('token', obj);
+        
         $.mobile.changePage("#principal");
       },
       error : function(error){     

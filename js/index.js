@@ -47,12 +47,11 @@ $( document ).ready(function() {
 
 
 $('#inicio > div').videoBG({
-    position:"fixed",
     zIndex:1,
-    mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
-    ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
-    webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
-    poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
+    mp4:'videos/INTRO.mp4',
+    ogv:'videos/INTRO.ogv',
+    webm:'videos/INTRO.webm',
+    poster:'videos/INTRO.jpg',
     scale:true
 });
 

@@ -36,6 +36,13 @@ function onDeviceReady() {
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
 
+  var tamanPantallaHeight = $(window).height()+100;
+  $('#inicio > div').css('height',tamanPantallaHeight-100);
+  $('#maximun').css('height',tamanPantallaHeight-100);
+  $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
+  $('#mypanel ul').css('height', tamanPantallaHeight-200);
+
+
 $('#inicio > div').videoBG({
     position:"fixed",
     zIndex:1,
@@ -90,10 +97,6 @@ $('#inicio > div').videoBG({
          },2000);
       });
 
-      var tamanPantallaHeight = $(window).height()+100;
-      $('#maximun').css('height',tamanPantallaHeight-100);
-      $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
-      $('#mypanel ul').css('height', tamanPantallaHeight-200);
 
 
     //ANIMACIONES

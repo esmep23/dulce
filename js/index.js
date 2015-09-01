@@ -44,8 +44,8 @@ localStorage.setItem('testObject', JSON.stringify(testObject));
 var retrievedObject = localStorage.getItem('testObject');
 alert('retrievedObject: ', JSON.parse(retrievedObject));
 */
-alert(localStorage.getItem('token'));
-if(localStorage.getItem('token')){
+alert(var x = document.cookie);
+if(document.cookie)){
   $.mobile.changePage( "#principal", {
           transition: "fade",
           reverse: false,
@@ -400,8 +400,9 @@ function guardoDatos(){
       success: function(response){  
         //alert(response); 
         var obj = telefono;
-        localStorage.setItem('token', JSON.stringify(obj));
-        alert(localStorage.getItem('token'));
+        document.cookie="token="+obj;
+        //localStorage.setItem('token', JSON.stringify(obj));
+        //alert(localStorage.getItem('token'));
         $.mobile.changePage("#principal");
       },
       error : function(error){     

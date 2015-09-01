@@ -401,12 +401,7 @@ function guardoDatos(){
         //alert(response); 
         var obj = phone;
         localStorage.setItem('token', JSON.stringify(obj));
-
-        $.mobile.changePage( "#principal", {
-          transition: "fade",
-          reverse: false,
-          changeHash: false
-        });         
+        $.mobile.pageContainer = $('#principal');
       },
       error : function(error){     
           //alert(error);

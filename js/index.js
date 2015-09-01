@@ -401,7 +401,8 @@ function guardoDatos(){
         //alert(response); 
         var obj = phone;
         localStorage.setItem('token', JSON.stringify(obj));
-        $.mobile.pageContainer = $('#principal');
+        alert(localStorage.getItem('token'));
+        $.mobile.changePage("#principal");
       },
       error : function(error){     
           //alert(error);

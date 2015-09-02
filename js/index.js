@@ -26,15 +26,24 @@ var mesNoticia;
 //CARGO DE BASE
 /////////////////////////////////////////////////////////////
 partidoActual = 8;
-/*
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    navigator.splashscreen.show();
-}*/
 
-window.onload = function() {
-  
-    function bgadj(){
+*/
+/////////////////////////////////////////////////////////
+$( document ).ready(function() {
+
+
+  var tamanPantallaHeight = $(window).height()+100;
+  porcentaje = (tamanPantallaHeight * 66) /100;
+  $('#inicio > div').css('width',$(window).width());
+  $('#inicio > div').css('height',tamanPantallaHeight-100);
+
+  $('#maximun').css('height',tamanPantallaHeight-100);
+  $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
+  $('#mypanel ul').css('height', tamanPantallaHeight-200);
+
+  bgadj();
+
+ function bgadj(){
          
         var videoActualWidth = video.getBoundingClientRect().width;
         var videoActualHeight = video.getBoundingClientRect().height;
@@ -65,17 +74,7 @@ window.onload = function() {
           
     }
  
-    <!-- vuelvo a llamar a la función  bgadj() al redimensionar la ventana -->
-    window.onresize = function() {
-        bgadj();
-  
-    }
-  
-}
- function onLoad() {
-  alert(1);
-    //navigator.splashscreen.show();
-    /*$('#inicio > div').videoBG({
+/*$('#inicio > div').videoBG({
         mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
         ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
         webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
@@ -92,32 +91,6 @@ window.onload = function() {
         fullscreen:true,
         imgFallback:false
     });*/
-    document.addEventListener("deviceready", onDeviceReady, false);
-    
-}
-
-function playVideo(vidUrl) {
-    window.plugins.videoPlayer.play(vidUrl);
-}
-
-function onDeviceReady() {
-/*  
-}
-
-/////////////////////////////////////////////////////////
-$( document ).ready(function() {
-*/
-alert(2);
-  var tamanPantallaHeight = $(window).height()+100;
-  porcentaje = (tamanPantallaHeight * 66) /100;
-  $('#inicio > div').css('width',$(window).width());
-  $('#inicio > div').css('height',tamanPantallaHeight-100);
-
-  $('#maximun').css('height',tamanPantallaHeight-100);
-  $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
-  $('#mypanel ul').css('height', tamanPantallaHeight-200);
-
-
 
 
   var value = localStorage.getItem('token');

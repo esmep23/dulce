@@ -34,8 +34,8 @@ $( document ).ready(function() {
 
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
-  $('#inicio > div').css('width',$(window).width());
-  $('#inicio > div').css('height',tamanPantallaHeight-100);
+  $('#video').css('width','100%');
+  $('#video').css('height','100%');
 
   $('#maximun').css('height',tamanPantallaHeight-100);
   $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);

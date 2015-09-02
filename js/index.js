@@ -48,11 +48,12 @@ $( document ).ready(function() {
 
 $('#inicio > div').videoBG({
     zIndex:1,
-    mp4:'../videos/intro.mp4',
-    ogv:'../videos/intro.ogv',
-    webm:'../videos/intro.webm',
-    poster:'../videos/intro.jpg',
-    scale:true
+    mp4:'http://vjs.zencdn.net/v/oceans.mp4',
+    ogv:'http://vjs.zencdn.net/v/oceans.mp4',
+    webm:'http://vjs.zencdn.net/v/oceans.mp4',
+    poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
+    preload:true,
+    loop:true
 });
 
   var value = localStorage.getItem('token');

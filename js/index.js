@@ -30,6 +30,23 @@ partidoActual = 8;
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     navigator.splashscreen.show();
+    $('#inicio > div').videoBG({
+        mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
+        ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
+        webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
+        poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
+        autoplay:true,
+        loop:true,
+        scale:true,
+        position:"absolute",
+        opacity:1,
+        textReplacement:false,
+        zIndex:1,
+        width:0,
+        height:0,
+        fullscreen:true,
+        imgFallback:true
+    });
 }
 
 
@@ -46,23 +63,7 @@ $( document ).ready(function() {
   $('#mypanel ul').css('height', tamanPantallaHeight-200);
 
 
-$('#inicio > div').videoBG({
-    mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
-    ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
-    webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
-    poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
-    autoplay:true,
-    loop:true,
-    scale:true,
-    position:"absolute",
-    opacity:1,
-    textReplacement:false,
-    zIndex:1,
-    width:0,
-    height:0,
-    fullscreen:true,
-    imgFallback:true
-});
+
 
   var value = localStorage.getItem('token');
   if(value){

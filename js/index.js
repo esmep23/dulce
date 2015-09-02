@@ -35,13 +35,13 @@ function onDeviceReady() {
  function onLoad() {
     //navigator.splashscreen.show();
     $('#inicio > div').videoBG({
-        mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
-        ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
-        webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
+        mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/piola.mp4',
+        ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/piola.ogv',
+        webm:'http://barcelonasc.com.ec/apps/bsc_news/video/piola.webm',
         poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
         autoplay:true,
         loop:true,
-        scale:true,
+        scale:false,
         position:"absolute",
         opacity:1,
         textReplacement:false,
@@ -49,7 +49,7 @@ function onDeviceReady() {
         width:0,
         height:0,
         fullscreen:true,
-        imgFallback:true
+        imgFallback:false
     });
     document.addEventListener("deviceready", onDeviceReady, false);
     

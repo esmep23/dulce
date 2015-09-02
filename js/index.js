@@ -33,8 +33,7 @@ function onDeviceReady() {
 }*/
 
  function onLoad() {
-    navigator.splashscreen.show();
-    document.addEventListener("deviceready", onDeviceReady, false);
+    //navigator.splashscreen.show();
     $('#inicio > div').videoBG({
         mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
         ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
@@ -52,6 +51,8 @@ function onDeviceReady() {
         fullscreen:true,
         imgFallback:true
     });
+    document.addEventListener("deviceready", onDeviceReady, false);
+    
 }
 
 function onDeviceReady() {

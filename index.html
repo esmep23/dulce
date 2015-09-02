@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery.min.js"></script>
 <script src="js/javascript-video-scrubber.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/fuente.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -370,7 +371,10 @@
 		            lastname: "required",
 		            country:"require",
 		            city:"required",
-		            phone:"required",
+		            phone:{
+		            	required: true,
+		            	number: true 
+		            },
 		            email: {
 		              required: true,
 		              email: true
@@ -381,7 +385,10 @@
 		            lastname: "Ingrese su apellido",
 		            country: "Ingrese su Pais",
 		            city: "Ingrese su ciudad",
-		            phone: "Ingrese un numero de teléfono valido",
+		            phone: {
+		            	required:"Ingrese su Telefono",
+		            	number:"Ingrese numeros"
+		            },
 		            email: {
 		              required: "Necesitamos un email valido",
 		              email: "Su email debe tener formato valido name@domain.com"
@@ -752,8 +759,6 @@
     	
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-		<script type="text/javascript" src="js/jquery.videoBG.js"></script>
 		<script src="js/slick.min.js"></script>
 		<!--<script type="text/javascript" src="http://code.vostrel.cz/jquery.reel.js"></script>-->
 		

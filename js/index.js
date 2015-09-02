@@ -48,10 +48,10 @@ $( document ).ready(function() {
 
 $('#inicio > div').videoBG({
     zIndex:1,
-    mp4:'../videos/intro.mp4',
-    ogv:'../videos/intro.ogv',
-    webm:'../videos/intro.webm',
-    poster:'../videos/intro.jpg',
+    mp4:'./assets/videos/intro.mp4',
+    ogv:'./assets/videos/intro.ogv',
+    webm:'./assets/videos/intro.webm',
+    poster:'./assets/videos/intro.jpg',
     scale:true
 });
 

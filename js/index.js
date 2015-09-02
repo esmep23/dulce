@@ -47,13 +47,21 @@ $( document ).ready(function() {
 
 
 $('#inicio > div').videoBG({
-    zIndex:1,
-    mp4:'http://vjs.zencdn.net/v/oceans.mp4',
-    ogv:'http://vjs.zencdn.net/v/oceans.mp4',
-    webm:'http://vjs.zencdn.net/v/oceans.mp4',
+    mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
+    ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
+    webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
     poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
-    preload:true,
-    loop:true
+    autoplay:true,
+    loop:true,
+    scale:true,
+    position:"absolute",
+    opacity:1,
+    textReplacement:false,
+    zIndex:1,
+    width:0,
+    height:0,
+    fullscreen:true,
+    imgFallback:true
 });
 
   var value = localStorage.getItem('token');

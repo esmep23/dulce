@@ -39,7 +39,7 @@ $( document ).ready(function() {
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#inicio > div').css('width',$(window).width());
-  $('#inicio > div').css('height',tamanPantallaHeight);
+  $('#inicio > div').css('height',tamanPantallaHeight-100);
 
   $('#maximun').css('height',tamanPantallaHeight-100);
   $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
@@ -48,10 +48,10 @@ $( document ).ready(function() {
 
 $('#inicio > div').videoBG({
     zIndex:1,
-    mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
-    ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
-    webm:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.webm',
-    poster:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.jpg',
+    mp4:'video/intro.mp4',
+    ogv:'video/intro.ogv',
+    webm:'video/intro.webm',
+    poster:'video/intro.jpg',
     scale:true
 });
 

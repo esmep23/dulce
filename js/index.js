@@ -26,10 +26,15 @@ var mesNoticia;
 //CARGO DE BASE
 /////////////////////////////////////////////////////////////
 partidoActual = 8;
-
+/*
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     navigator.splashscreen.show();
+}*/
+
+ function onLoad() {
+    navigator.splashscreen.show();
+    document.addEventListener("deviceready", onDeviceReady, false);
     $('#inicio > div').videoBG({
         mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
         ogv:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.ogv',
@@ -49,10 +54,13 @@ function onDeviceReady() {
     });
 }
 
+function onDeviceReady() {
+/*  
+}
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-
+*/
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#inicio > div').css('width',$(window).width());

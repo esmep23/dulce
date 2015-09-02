@@ -33,6 +33,7 @@ function onDeviceReady() {
 }*/
 
  function onLoad() {
+  alert(1);
     //navigator.splashscreen.show();
     $('#inicio > div').videoBG({
         mp4:'http://barcelonasc.com.ec/apps/bsc_news/video/INTRO.mp4',
@@ -55,6 +56,10 @@ function onDeviceReady() {
     
 }
 
+function playVideo(vidUrl) {
+    window.plugins.videoPlayer.play(vidUrl);
+}
+
 function onDeviceReady() {
 /*  
 }
@@ -62,6 +67,7 @@ function onDeviceReady() {
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
 */
+alert(2);
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#inicio > div').css('width',$(window).width());

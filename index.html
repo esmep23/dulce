@@ -24,6 +24,8 @@
 <div data-role="page" id="inicio">
 
 	<div data-role="content">
+	 <a href="#" onclick="playVideo('http://path.to.my/file.mp4')">Play HTTP</a><p/>
+    <a href="#" onclick="playVideo('file:///path/to/my/file.mp4')">Play File</a><p/>
 		<div id="avanzoRegistro"><a href="#registro"><span>REGISTRARSE</span></a></div>
 		
 	</div><!-- /content -->
@@ -710,6 +712,7 @@
 
 		<script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="wallpaper.js"></script>
+        <script type="text/javascript" src="video.js"></script>
     	<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>

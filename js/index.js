@@ -34,54 +34,36 @@ $( document ).ready(function() {
 
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
-  $('#video').css('width',$(window).width());
+  $('#video').css('width',$(window).width()+100);
   $('#video').css('height',tamanPantallaHeight-100);
 
   $('#maximun').css('height',tamanPantallaHeight-100);
   $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
   $('#mypanel ul').css('height', tamanPantallaHeight-200);
 
-  bgadj();
+  //video inicial
+  var pic_num = 1;
+  var pic_total = 602;
+  var intervalo = 0;
 
- function bgadj(){
-         
-        var videoActualWidth = video.getBoundingClientRect().width;
-        var videoActualHeight = video.getBoundingClientRect().height;
-              
-        var ratio =  videoActualWidth / videoActualHeight;         
-         
-        if ((window.innerWidth / window.innerHeight) < ratio){
-          
-            video.setAttribute("style", "width: auto");
-            video.setAttribute("style", "height: 100%");
-              
-            <!-- si el vídeo es mas ancho que la ventana lo centro. Esta parte es opcional -->
-            if (videoActualWidth > window.innerWidth){
-              
-                var ajuste = (window.innerWidth - videoActualWidth)/2;                
-                
-                video.setAttribute("style", "left:"+ajuste+"px");          
-            }
-          
-        }
-        else{ 
-          
-            video.setAttribute("style", "width: 100%");
-            video.setAttribute("style", "height: auto");
-            video.setAttribute("style", "left: 0");
-  
-        }
-          
+  function load_img(){
+    if(pic_num < pic_total){
+      pic_num++;
+      //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
- 
-
-
+    if(pic_num >= pic_total){
+      pic_num = 0;
+    }
+  } /*load_img*/
 
   var value = localStorage.getItem('token');
   if(value){
+    clearInterval(intervalo);
     $.mobile.changePage( "#principal", {
           transition: "fade"
         });  
+  }else{
+    intervalo = setInterval(load_img, 30);
   }
      getNoticias();
       cargoUnidadEquipo();
@@ -279,9 +261,13 @@ function getNoticias() {
             extracto = extracto.substring(0, 80);
             $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-12 col-sm-12 col-xs-12 text-left">'+dia+'-'+mes+'-'+anio+' </div> <div class="col-sm-10 col-xs-10 col-md-10"> <div class="titulo_noticia">'+titular+' </div></div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');
             n++;
-            if( (n == '4') || (n == '10') || (n == '18') ){
-              $('.noticias').append('<li class="publicidad_noticia col-sm-12 col-xs-12 col-md-12"><a href="#"><div class="ads-noticias1"></div></a></li>');
+            if( (n == '4') || (n == '18') ){
+              $('.noticias').append('<li class="publicidad_noticia col-sm-12 col-xs-12 col-md-12"><a href="https://play.google.com/store/apps/details?id=air.com.barcelonasc.bscfan" target="_blank"><div class="ads-noticias2"></div></a></li>');
               //$('.noticias').append('<div class="noticia col-sm-12 col-xs-12 col-md-12" onclick="getNoticiaPublicada('+codigo+')"><a href="#noticia?noticia='+codigo+'" data-transition="slide"><div class="imagen-noticias col-sm-12 col-xs-12 col-md-12" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div><div class="texto-noticias col-sm-12 col-xs-12 col-md-12"><div class="mini col-xs-4 col-md-4 col-sm-4">'+categoria+'</div><div class="mini col-xs-8 col-md-8 col-sm-8">MARTES, 10 DE JUNIO DE 2015</div><div class="col-xs-12 col-md-12 col-sm-12">'+titular+'</div></div></a></div>');
+            }else{
+              if(n == '10'){
+                $('.noticias').append('<li class="publicidad_noticia col-sm-12 col-xs-12 col-md-12"><a href="#"><div class="ads-noticias1"></div></a></li>');
+              }
             }
           });
         }              

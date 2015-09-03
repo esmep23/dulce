@@ -29,35 +29,18 @@
 <div data-role="page" id="inicio">
 
 	<div data-role="content">
+	<div class="oficial col-md-12 text-center">
+		<img src="img/un_solo_idolo_blanco.png" />
+	</div>
+
 	<div id="overlay"></div>
 	
-	<!-- placeholder image for video (required) -->
 	<img id="video" src="frame/barcelona_00000.jpg" alt="" />
+	<div class="informacion-ne3 col-md-12 text-center">
+		<h3>Bienvenidos</h3>
+		<p>Regístrate y obtendrás toda información Oficial del Club.</p>
+	</div>
 	
-	<!-- preload the video frames (required) -->
-	<script type="text/javascript">
-		
-		var pic_num = 1;
-              var pic_total = 602;
-
-              function load_img()
-              {
-                             if(pic_num < pic_total)
-                             {
-                                           pic_num++;
-                                           $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg")
-                             }
-
-                             if(pic_num >= pic_total)
-                             {
-                                           pic_num = 0;
-                             }
-              }
-
-              setInterval(load_img, 30);
-
-		//-->
-	</script>
 		<div id="avanzoRegistro"><a href="#registro"><span>REGISTRARSE</span></a></div>
 		
 	</div><!-- /content -->
@@ -419,9 +402,10 @@
 				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#plantillas" data-transition="slide"><i class="fa fa-user fa-2x"></i><span>Plantilla</span></a></li>
 				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#estadisticas" data-transition="slide"><i class="fa fa-bar-chart fa-2x"></i><span>Posiciones</span></a></li>
 				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#descargas" data-transition="slide"><i class="fa fa-download fa-2x"></i><span id="mR" >Descargas</span></a></li>
-				<li class="col-md-12 col-sm-12 col-xs-12 text-center m20"><a href="https://www.facebook.com/barcelonascweb" data-transition="slide"><i class="fa fa-facebook-official fa-2x"></i><span>Facebook</span></a></li>
-				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://twitter.com/BarcelonaSCweb" data-transition="slide"><i class="fa fa-twitter-square fa-2x"></i><span>Twitter</span></a></li>
-				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://instagram.com/barcelonasc" data-transition="slide"><i class="fa fa-instagram fa-2x"></i><span>Instagram</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://play.google.com/store/apps/details?id=air.com.barcelonasc.bscfan" target="_blank"><i class="fa fa-bscFan fa-2x"></i><span>BSC FAN</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center m20"><a href="https://www.facebook.com/barcelonascweb" target="_blank"><i class="fa fa-facebook-official fa-2x"></i><span>Facebook</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://twitter.com/BarcelonaSCweb" target="_blank"><i class="fa fa-twitter-square fa-2x"></i><span>Twitter</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://instagram.com/barcelonasc" target="_blank"><i class="fa fa-instagram fa-2x"></i><span>Instagram</span></a></li>
 			</ul>
 	    	<!--<a href="#my-header" data-rel="close">Close panel</a>-->
 			<div id="reglaSlogan2" class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#"><img class="bscLogo" src="https://www.barcelonasc.com.ec/apps/bsc_news/img/appOficial.png" /></a></div>	    
@@ -436,10 +420,10 @@
 	<div data-role="content">
 		<div class="infVideos"><span>ÚLTIMOS <strong>VIDEOS</strong></span></div>
 		<div class="sliderVideo">
-			<div><video width="100%" height="240" poster="http://barcelonasc.com.ec/apps/bsc_news/video/90anios.png" controls>
+			<div><video id="bsc" width="100%" height="240" poster="http://barcelonasc.com.ec/apps/bsc_news/video/90anios.png" controls>
 				  <source src="http://www.barcelonasc.com.ec/apps/bsc_news/video/90_anios_barcelona.mp4" type="video/mp4">
 				</video></div>
-			<div><video width="100%" height="240" poster="http://barcelonasc.com.ec/apps/bsc_news/video/APP_BSC.png" controls>
+			<div><video id="bsc" width="100%" height="240" poster="http://barcelonasc.com.ec/apps/bsc_news/video/APP_BSC.png" controls>
 				  <source src="http://www.barcelonasc.com.ec/apps/bsc_news/video/APP_BSC.mp4" type="video/mp4">
 				</video></div>
 			
@@ -699,10 +683,10 @@
 			<div id="tabs-1A">
 				<!--<div class="ads-wallpapers1"></div>-->
 				<div class="slider-for">
-					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen1.png&size=300x450" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen1.png')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
-					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen2.png&size=300x450" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen2.png')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
-					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen4.jpg&size=300x450" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen4.jpg')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
-					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen6.jpg&size=300x450" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen6.jpg')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
+					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen1.png&size=300x400" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen1.png')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
+					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen2.png&size=300x400" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen2.png')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
+					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen4.jpg&size=300x400" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen4.jpg')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
+					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen6.jpg&size=300x400" /><div id="desc" onclick="descargo('https://www.barcelonasc.com.ec/apps/bsc_news/img/wallpapers/screen6.jpg')"><i class="fa fa-silueta-download fa-2x"></i></div></div>
 				</div>
 				<div class="slider-nav">
 					<div><img src="https://www.barcelonasc.com.ec/apps/bsc_news/img/thumb3.php?src=./wallpapers/screen1.png&size=100x100" alt="" /></div>

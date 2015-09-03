@@ -30,9 +30,8 @@ partidoActual = 8;
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-/**/
-  
-/**/
+
+
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#video').css('width',$(window).width());
@@ -42,7 +41,40 @@ $( document ).ready(function() {
   $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
   $('#mypanel ul').css('height', tamanPantallaHeight-200);
 
+  bgadj();
+
+ function bgadj(){
+         
+        var videoActualWidth = video.getBoundingClientRect().width;
+        var videoActualHeight = video.getBoundingClientRect().height;
+              
+        var ratio =  videoActualWidth / videoActualHeight;         
+         
+        if ((window.innerWidth / window.innerHeight) < ratio){
+          
+            video.setAttribute("style", "width: auto");
+            video.setAttribute("style", "height: 100%");
+              
+            <!-- si el vídeo es mas ancho que la ventana lo centro. Esta parte es opcional -->
+            if (videoActualWidth > window.innerWidth){
+              
+                var ajuste = (window.innerWidth - videoActualWidth)/2;                
+                
+                video.setAttribute("style", "left:"+ajuste+"px");          
+            }
+          
+        }
+        else{ 
+          
+            video.setAttribute("style", "width: 100%");
+            video.setAttribute("style", "height: auto");
+            video.setAttribute("style", "left: 0");
+  
+        }
+          
+    }
  
+
 
 
   var value = localStorage.getItem('token');

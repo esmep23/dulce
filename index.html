@@ -12,8 +12,8 @@
 	<!--<link rel="stylesheet" href="https://www.barcelonasc.com.ec/apps/bsc_news/css/swiper.css">-->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery.min.js"></script>
-<script src="js/javascript-video-scrubber.js" type="text/javascript"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	<script src="js/javascript-video-scrubber.js" type="text/javascript"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/fuente.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -30,18 +30,13 @@
 
 	<div data-role="content">
 	<div id="overlay"></div>
-	<div class="animacion"></div>
+	
 	<!-- placeholder image for video (required) -->
-	<!--<img id="video" src="frame/barcelona_00000.jpg" alt="" />-->
+	<img id="video" src="frame/barcelona_00000.jpg" alt="" />
 	
 	<!-- preload the video frames (required) -->
 	<script type="text/javascript">
-		<!--//
-		// image filenames in frames folder should be "image_000000.jpg" through "image_000098.jpg"
-		/*for(i = 0; i < totalFrames; i++) { // loop for each image in sequence
-			images[i] =  new Image(); // add image object to array
-			images[i].src = "frame/barcelona_"+pad(i, 5)+".jpg"; // set the source of the image object
-		}*/
+		
 		var pic_num = 1;
               var pic_total = 602;
 
@@ -50,15 +45,7 @@
                              if(pic_num < pic_total)
                              {
                                            pic_num++;
-                                           //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg")
-                                           $('.animacion img').css('display','none');
-
-                                           $('.animacion blubi_'+pad(pic_num, 5)).css('display','block');
-
-
-                                           $('.animacion').append('<img id="video blubi_'+pad(pic_num, 5)+'" src="frame/barcelona_'+pad(pic_num, 5)+'.jpg" alt="" />');
-                                           
-
+                                           $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg")
                              }
 
                              if(pic_num >= pic_total)

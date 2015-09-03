@@ -30,9 +30,9 @@
 
 	<div data-role="content">
 	<div id="overlay"></div>
-	
+	<div class="animacion"></div>
 	<!-- placeholder image for video (required) -->
-	<img id="video" src="frame/barcelona_00000.jpg" alt="" />
+	<!--<img id="video" src="frame/barcelona_00000.jpg" alt="" />-->
 	
 	<!-- preload the video frames (required) -->
 	<script type="text/javascript">
@@ -50,7 +50,15 @@
                              if(pic_num < pic_total)
                              {
                                            pic_num++;
-                                           $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg")
+                                           //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg")
+                                           $('.animacion img').css('display','none');
+
+                                           $('.animacion blubi_'+pad(pic_num, 5)).css('display','block');
+
+
+                                           $('.animacion').append('<img id="video blubi_'+pad(pic_num, 5)+'" src="frame/barcelona_'+pad(pic_num, 5)+'.jpg" alt="" />');
+                                           
+
                              }
 
                              if(pic_num >= pic_total)

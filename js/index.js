@@ -30,8 +30,9 @@ partidoActual = 8;
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
-
-
+/**/
+  
+/**/
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#video').css('width',$(window).width());

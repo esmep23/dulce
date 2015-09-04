@@ -5,19 +5,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	
+
+	
 	<link rel="stylesheet" href="css/jquery.mobile.min.css">
 	<link rel="stylesheet" type="text/css" href="css/slick.css"/>
 	<link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<!--<link rel="stylesheet" href="https://www.barcelonasc.com.ec/apps/bsc_news/css/swiper.css">-->
+	<link rel="stylesheet" href="https://www.barcelonasc.com.ec/apps/bsc_news/css/swiper.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/javascript-video-scrubber.js" type="text/javascript"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/fuente.css">
+	
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-
 </head>
 <body > 
 
@@ -403,9 +406,9 @@
 				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#estadisticas" data-transition="slide"><i class="fa fa-bar-chart fa-2x"></i><span>Posiciones</span></a></li>
 				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#descargas" data-transition="slide"><i class="fa fa-download fa-2x"></i><span id="mR" >Descargas</span></a></li>
 				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://play.google.com/store/apps/details?id=air.com.barcelonasc.bscfan" target="_blank"><i class="fa fa-bscFan fa-2x"></i><span>BSC FAN</span></a></li>
-				<li class="col-md-12 col-sm-12 col-xs-12 text-center m20"><a href="https://www.facebook.com/barcelonascweb" target="_blank"><i class="fa fa-facebook-official fa-2x"></i><span>Facebook</span></a></li>
-				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://twitter.com/BarcelonaSCweb" target="_blank"><i class="fa fa-twitter-square fa-2x"></i><span>Twitter</span></a></li>
-				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://instagram.com/barcelonasc" target="_blank"><i class="fa fa-instagram fa-2x"></i><span>Instagram</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center m20"><a href="https://www.facebook.com/barcelonascweb" target="_blank" data-rel="external"><i class="fa fa-facebook-official fa-2x"></i><span>Facebook</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://twitter.com/BarcelonaSCweb" target="_blank" data-rel="external"><i class="fa fa-twitter-square fa-2x"></i><span>Twitter</span></a></li>
+				<li class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="https://instagram.com/barcelonasc" target="_blank" data-rel="external"><i class="fa fa-instagram fa-2x"></i><span>Instagram</span></a></li>
 			</ul>
 	    	<!--<a href="#my-header" data-rel="close">Close panel</a>-->
 			<div id="reglaSlogan2" class="col-md-12 col-sm-12 col-xs-12 text-center"><a href="#"><img class="bscLogo" src="https://www.barcelonasc.com.ec/apps/bsc_news/img/appOficial.png" /></a></div>	    
@@ -420,12 +423,6 @@
 	<div data-role="content">
 		<div class="infVideos"><span>ÚLTIMOS <strong>VIDEOS</strong></span></div>
 		<div class="sliderVideo">
-			<div><video id="bsc" width="100%" height="240" poster="http://barcelonasc.com.ec/apps/bsc_news/video/90anios.png" controls>
-				  <source src="http://www.barcelonasc.com.ec/apps/bsc_news/video/90_anios_barcelona.mp4" type="video/mp4">
-				</video></div>
-			<div><video id="bsc" width="100%" height="240" poster="http://barcelonasc.com.ec/apps/bsc_news/video/APP_BSC.png" controls>
-				  <source src="http://www.barcelonasc.com.ec/apps/bsc_news/video/APP_BSC.mp4" type="video/mp4">
-				</video></div>
 			
 		</div>
 		
@@ -735,8 +732,13 @@
 		<script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="wallpaper.js"></script>
         <script type="text/javascript" src="video.js"></script>
-    	
-		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+        
+		<script src="js/javascript-video-scrubber.js" type="text/javascript"></script>
+		
+	
+    	<script src="http://www.youtube.com/player_api"></script>
+		
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/slick.min.js"></script>
 		<!--<script type="text/javascript" src="http://code.vostrel.cz/jquery.reel.js"></script>-->

@@ -49,12 +49,19 @@ $( document ).ready(function() {
   function load_img(){
     if(pic_num < pic_total){
       pic_num++;
-      $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
+      //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
     if(pic_num >= pic_total){
       pic_num = 0;
     }
   } /*load_img*/
+
+  
+  $('.sliderVideo').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    console.log(nextSlide);
+    //$('#bsc').get(0).stopVideo();
+    // left 
+  });
 
   var value = localStorage.getItem('token');
   if(value){
@@ -74,6 +81,7 @@ $( document ).ready(function() {
       getAlineacion();
       getSuplentes();
       getTwitter();
+      getVideos();
 
       $('#tabs2').click(function(e) {
         e.preventDefault();
@@ -105,11 +113,8 @@ $( document ).ready(function() {
 
 
     //ANIMACIONES
-    $('.sliderVideo').slick({
-      autoplay: true,
-      dots: true
-    });
-    $('.cancha-vs').css('visibility', 'hidden');
+    
+  //  $('.cancha-vs').css('visibility', 'hidden');
     $('.slider-for').css('visibility', 'hidden');
     $('.slider-nav').css('visibility', 'hidden');
  
@@ -397,7 +402,7 @@ function getTwitter(){
       }
     }); 
 }
-/*
+
 function getVideos() { 
     $.ajax({
       url: direccion+'actions/getVideos.php',
@@ -409,18 +414,22 @@ function getVideos() {
           $.each(response,function(key,value){ 
             link = value.link;
             console.log(link);
-            $('.sliderVideo').append('<div class="col-sm-12 col-xs-12 col-md-12 swiper-slide"><iframe width="100%" height="315" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');         
+            $('.sliderVideo').append('<div><iframe id="bsc" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
           });
         }
-
-
       },
       error : function(error){     
           //alert(error);
       }
-    });     
+    }).done(function(){
+        $('.sliderVideo').slick({
+          autoplay: true,
+          dots: true,
+          draggable: true
+        });
+      });     
 }
-*/
+
 function guardoDatos(){
   nombre = $('#name').val();
   apellido = $('#lastname').val();
@@ -429,7 +438,6 @@ function guardoDatos(){
   telefono = $('#phone').val();
   email = $('#email').val();
 
-  //alert(nombre +'-'+ apellido +'-'+ pais +'-'+ ciudad +'-'+ telefono +'-'+ email);
   var datos ={
       'nombre': nombre,
       'apellido': apellido,
@@ -457,6 +465,7 @@ function guardoDatos(){
 
     });  
 }
+
 function cargoUnidadEquipo(){
     $.ajax({
       url: direccion+'actions/getPlantilla.php',
@@ -536,7 +545,7 @@ function cargoCampeonato(){
       error : function(error){     
           //alert(error);
       }
-    });     
+    });    
 }
 
 function getPartidoProximo(argument){   
@@ -550,7 +559,7 @@ function getPartidoProximo(argument){
       cache: true,
       dataType: "json",
       data: datos,
-      success: function(response){  
+      success: function(response){
         if(response!=null && response!='' && response!='[]'){ 
           $.each(response,function(key,value){ 
             fecha = value.fecha;
@@ -559,14 +568,31 @@ function getPartidoProximo(argument){
             campeonato = value.campeonato;
             equipo2 = value.equipo2;
             estadio = value.estadio;
+            console.log(0);
             $('.cancha-vs').append('<div> <div class="col-sm-12 col-xs-12 col-md-12 text-center"> <h4>Campeonato Ecuatoriano de Fútbol</h4> <p>Fecha: '+ fecha +' |  Hora: '+ hora +'</p> </div> <div class="name_Equipo1 aumento-left name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo1+'</div> <div class="col-sm-2 col-xs-2 col-md-2"></div> <div class="name_Equipo2 aumento-right name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo2+'</div> <div class="equipo1 col-xs-4 col-md-4 col-sm-4 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo1+'.png" /> </div> <div class="col-xs-3 col-md-3 col-sm-3 text-center centroV"> <span>VS.</span> </div> <div class="equipo2 col-xs-5 col-md-5 col-sm-5 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo2+'.png" /> </div> <div class="espacio col-md-12 col-xs-12 text-center"> <h5>Estadio <strong> '+estadio+'</strong></h5> </div> </div>');
           });
         }              
+      },
+      complete :function(response){
+        console.log(4);
+        $('.cancha-vs').slick({
+          infinite: false,
+          autoplay:true,
+          dots:false,
+          arrows:false
+        });
       },
       error : function(error){     
           //alert(error);
       }
 
+    }).then(function(){
+      console.log(1);
+      setTimeout(function(){
+        console.log(3);
+      
+       
+      },2000);
     });    
 }
 
@@ -574,7 +600,7 @@ function getPartidoProximo(argument){
 /*********************************************************************/
 /* FUNCIONES */
 /*********************************************************************/
-
+/*
 $(document).on('pagebeforeshow', '#proximopartido', function(){  
     $('.cancha-vs').css('visibility', 'hidden');
     setTimeout(function(){
@@ -612,3 +638,4 @@ $(document).on('pagebeforeshow', '#descargas', function(){
       });
      },2000);
  });
+ */

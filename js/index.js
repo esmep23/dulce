@@ -22,43 +22,6 @@ var arrayPuntajesPTS = new Array();
 var mesNoticia;
 
 
-
-/*********************************************************************/
-/* API YOUTUBE */
-/*********************************************************************/
-
-var tag = document.createElement('script');
-tag.src = "//www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-var player;
-
-function onYouTubePlayerAPIReady(argument) {
-  // create the global player from the specific iframe (#video)
-  player = new YT.Player(argument, {
-    events: {
-      // call this function when player is ready to use
-      'onReady': onPlayerReady
-    }
-  });
-}
-
-function onPlayerReady(event) {
-  
-  var playButton = document.getElementById("play-button");
-    playButton.addEventListener("click", function() {
-    player.playVideo();
-  });
-  
-  var pauseButton = document.getElementById("pause-button");
-    pauseButton.addEventListener("click", function() {
-    player.pauseVideo();
-  });
-  
-}
-
-
 /////////////////////////////////////////////////////////////
 //CARGO DE BASE
 /////////////////////////////////////////////////////////////
@@ -87,7 +50,7 @@ $( document ).ready(function() {
   function load_img(){
     if(pic_num < pic_total){
       pic_num++;
-      $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
+      //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
     if(pic_num >= pic_total){
       pic_num = 0;
@@ -444,7 +407,7 @@ function getVideos() {
           $.each(response,function(key,value){ 
             link = value.link;
             console.log(link);
-            $('.sliderVideo').append('<div><iframe id="bsc" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
+            $('.sliderVideo').append('<div><iframe id="bsc'+key+'" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
           });
         }
       },
@@ -452,12 +415,12 @@ function getVideos() {
         //alert(1);
         $('.sliderVideo').slick({
           autoplay: true,
-          dots: true,
-          draggable: false
+          dots: true
         });
          $('.sliderVideo').on({
             beforeChange: function (event, slick, current_slide_index, next_slide_index) {
-
+              //alert(1);
+              $('div.slick-active iframe')[0].src = $('div.slick-active iframe')[0].src;
               //player.pauseVideo();
               //$('#bsc').stopVideo();
               //player.pauseVideo();

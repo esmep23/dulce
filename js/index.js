@@ -582,7 +582,7 @@ function getPartidoProximo(argument){
       complete :function(response){
         //alert(1);
         $('.cancha-vs').slick({
-          infinite: false,
+          infinite: true,
           autoplay:true,
           dots:false,
           arrows:false

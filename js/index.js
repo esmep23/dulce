@@ -407,40 +407,27 @@ function getVideos() {
           $.each(response,function(key,value){ 
             link = value.link;
             console.log(link);
-            $('.sliderVideo').append('<div><iframe id="bsc'+key+'" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
+            $('.sliderVideo').append('<div><iframe id="bsc'+key+'" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
           });
         }
       },
       complete: function(){
-        //alert(1);
         $('.sliderVideo').slick({
           autoplay: true,
-          dots: true
+          dots: true,
+          arrows: false,
+          speed: 400
         });
          $('.sliderVideo').on({
             beforeChange: function (event, slick, current_slide_index, next_slide_index) {
-              //alert(1);
-              $('div.slick-active iframe')[0].src = $('div.slick-active iframe')[0].src;
-              //player.pauseVideo();
-              //$('#bsc').stopVideo();
-              //player.pauseVideo();
-                
+              $('div.slick-active iframe')[0].src = $('div.slick-active iframe')[0].src;                
             }
           })
       },
       error : function(error){     
         //alert(error);
       }
-    }).done(function(){
-        //alert(2);
-        /*$('.sliderVideo').slick({
-          autoplay: true,
-          dots: true,
-          draggable: true
-        });*/
-      }).then(function(){
-        //alert(3);
-      });     
+    });     
 }
 
 function guardoDatos(){
@@ -625,6 +612,9 @@ $(document).on('pagebeforeshow', '#proximopartido', function(){
      },2000);
  });
 */
+$(document).on("pagebeforechange", function() { 
+  $('iframe').src = $('iframe').src;
+});
 $(document).on('pagebeforeshow', '#descargas', function(){  
     $('.slider-for').css('visibility', 'hidden');
     $('.slider-nav').css('visibility', 'hidden');

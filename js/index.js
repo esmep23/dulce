@@ -60,6 +60,7 @@ $( document ).ready(function() {
   var value = localStorage.getItem('token');
   if(value){
     clearInterval(intervalo);
+    getVideos();
     $.mobile.changePage( "#principal", {
       transition: "fade"
     });  
@@ -613,9 +614,7 @@ $(document).on('pagebeforeshow', '#proximopartido', function(){
      },2000);
  });
 
-$(document).on('pagebeforeshow', '#principal', function(){ 
-    getVideos();
-});
+
 $(document).on("pagebeforechange", function() { 
   $('iframe').src = $('iframe').src;
 });

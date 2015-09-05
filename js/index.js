@@ -60,14 +60,14 @@ $( document ).ready(function() {
   var value = localStorage.getItem('token');
   if(value){
     clearInterval(intervalo);
-    getVideos();
     $.mobile.changePage( "#principal", {
-          transition: "fade"
-        });  
+      transition: "fade"
+    });  
+
   }else{
     intervalo = setInterval(load_img, 30);
   }
-     getNoticias();
+      getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
       $( "#tabs" ).tabs();
@@ -109,7 +109,7 @@ $( document ).ready(function() {
 
     //ANIMACIONES
     
-  //  $('.cancha-vs').css('visibility', 'hidden');
+    $('.cancha-vs').css('visibility', 'hidden');
     $('.slider-for').css('visibility', 'hidden');
     $('.slider-nav').css('visibility', 'hidden');
  
@@ -600,7 +600,7 @@ function getPartidoProximo(argument){
 /*********************************************************************/
 /* FUNCIONES */
 /*********************************************************************/
-/*
+
 $(document).on('pagebeforeshow', '#proximopartido', function(){  
     $('.cancha-vs').css('visibility', 'hidden');
     setTimeout(function(){
@@ -612,7 +612,10 @@ $(document).on('pagebeforeshow', '#proximopartido', function(){
       });
      },2000);
  });
-*/
+
+$(document).on('pagebeforeshow', '#principal', function(){ 
+    getVideos();
+});
 $(document).on("pagebeforechange", function() { 
   $('iframe').src = $('iframe').src;
 });

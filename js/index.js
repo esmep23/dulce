@@ -22,11 +22,47 @@ var arrayPuntajesPTS = new Array();
 var mesNoticia;
 
 
+
+/*********************************************************************/
+/* API YOUTUBE */
+/*********************************************************************/
+
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+
+function onYouTubePlayerAPIReady(argument) {
+  // create the global player from the specific iframe (#video)
+  player = new YT.Player(argument, {
+    events: {
+      // call this function when player is ready to use
+      'onReady': onPlayerReady
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  
+  var playButton = document.getElementById("play-button");
+    playButton.addEventListener("click", function() {
+    player.playVideo();
+  });
+  
+  var pauseButton = document.getElementById("pause-button");
+    pauseButton.addEventListener("click", function() {
+    player.pauseVideo();
+  });
+  
+}
+
+
 /////////////////////////////////////////////////////////////
 //CARGO DE BASE
 /////////////////////////////////////////////////////////////
 partidoActual = 8;
-
 
 /////////////////////////////////////////////////////////
 $( document ).ready(function() {
@@ -36,7 +72,9 @@ $( document ).ready(function() {
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#video').css('width',$(window).width()+100);
   $('#video').css('height',tamanPantallaHeight-100);
+  $('.ui-content').css('height',tamanPantallaHeight-100);
 
+  $('#maximun').css('height',tamanPantallaHeight-100);
   $('#maximun').css('height',tamanPantallaHeight-100);
   $('#mypanel .ui-panel-inner').css('height', tamanPantallaHeight);
   $('#mypanel ul').css('height', tamanPantallaHeight-200);
@@ -55,13 +93,6 @@ $( document ).ready(function() {
       pic_num = 0;
     }
   } /*load_img*/
-
-  
-  $('.sliderVideo').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-    console.log(nextSlide);
-    //$('#bsc').get(0).stopVideo();
-    // left 
-  });
 
   var value = localStorage.getItem('token');
   if(value){
@@ -90,7 +121,7 @@ $( document ).ready(function() {
         setTimeout(function(){
           $('.slider-for').css('visibility', 'visible');
           $('.slider-nav').css('visibility', 'visible');
-         // alert('9999999999999999999999');
+         
           $('.slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -120,7 +151,6 @@ $( document ).ready(function() {
  
 
     //SONIDOS
-          //array sounds
       $( ".play_button" ).click(function() {
           $('.play_button').hide();
           $('.pause_button').show();
@@ -180,17 +210,14 @@ $( document ).ready(function() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function descargo(argument){
-  //alert(argument);
-  var imagePath = argument;             // Mention the complete path to your image. If it contains under multiple folder then mention the path from level "www" to the level your image contains with its name including its extension.
-  var imageTitle = "bsc news";                     // Set title of your choice.
-  var folderName = "PluginImages";                  // Set folder Name of your choice. 
-  var success = function() { alert("Wallpaper Instalado con Éxito"); };           // Do something on success return.
-  var error = function(message) { alert("Oopsie! " + message); };   // Do something on error return.
+  var imagePath = argument;
+  var imageTitle = "bsc news"; 
+  var folderName = "PluginImages"; 
+  var success = function() { alert("Wallpaper Instalado con Éxito"); };   
+  var error = function(message) { alert("Oopsie! " + message); }; 
 
-  // For setting wallpaper & saving image
   wallpaper.setImage(imagePath, imageTitle, folderName, success, error);
 
-  // For saving image
   wallpaper.saveImage(imagePath, imageTitle, folderName, success, error); 
 }
 
@@ -267,7 +294,7 @@ function getNoticias() {
             $('.noticias').append('<li class="col-sm-12 col-xs-12 col-md-12"> <div class="row"> <a href="#noticia?noticia='+codigo+'" onclick="getNoticiaPublicada('+codigo+')" data-transition="slide"> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="mini col-md-12 col-sm-12 col-xs-12 text-left">'+dia+'-'+mes+'-'+anio+' </div> <div class="col-sm-10 col-xs-10 col-md-10"> <div class="titulo_noticia">'+titular+' </div></div> </div> <div class="col-sm-6 col-xs-6 col-md-6"> <div class="pictureImage" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div> </div> </a> </div> </li>');
             n++;
             if( (n == '4') || (n == '18') ){
-              $('.noticias').append('<li class="publicidad_noticia col-sm-12 col-xs-12 col-md-12"><a href="https://play.google.com/store/apps/details?id=air.com.barcelonasc.bscfan" target="_blank"><div class="ads-noticias2"></div></a></li>');
+               $('.noticias').append("<li class='publicidad_noticia col-sm-12 col-xs-12 col-md-12'><div class='ads-noticias2' onclick='googlePlay()'></div></li>");
               //$('.noticias').append('<div class="noticia col-sm-12 col-xs-12 col-md-12" onclick="getNoticiaPublicada('+codigo+')"><a href="#noticia?noticia='+codigo+'" data-transition="slide"><div class="imagen-noticias col-sm-12 col-xs-12 col-md-12" style="background-image:url('+rutaimagen+'img/noticias/'+anio+'/'+mes+'/'+anio+'_'+mes+'_'+dia+'_'+num_news+'_'+picture_quantity+'.jpg)"></div><div class="texto-noticias col-sm-12 col-xs-12 col-md-12"><div class="mini col-xs-4 col-md-4 col-sm-4">'+categoria+'</div><div class="mini col-xs-8 col-md-8 col-sm-8">MARTES, 10 DE JUNIO DE 2015</div><div class="col-xs-12 col-md-12 col-sm-12">'+titular+'</div></div></a></div>');
             }else{
               if(n == '10'){
@@ -282,7 +309,9 @@ function getNoticias() {
       }
     });     
 }
-
+function googlePlay(){
+  window.open("https://play.google.com/store/apps/details?id=air.com.barcelonasc.bscfan", '_system');
+}
 function getNoticiaPublicada(argument) {  
     var datos ={
     'noti': argument
@@ -404,6 +433,7 @@ function getTwitter(){
 }
 
 function getVideos() { 
+  var p=0;
     $.ajax({
       url: direccion+'actions/getVideos.php',
       type: "GET",
@@ -418,15 +448,35 @@ function getVideos() {
           });
         }
       },
-      error : function(error){     
-          //alert(error);
-      }
-    }).done(function(){
+      complete: function(){
+        //alert(1);
         $('.sliderVideo').slick({
           autoplay: true,
           dots: true,
-          draggable: true
+          draggable: false
         });
+         $('.sliderVideo').on({
+            beforeChange: function (event, slick, current_slide_index, next_slide_index) {
+
+              //player.pauseVideo();
+              //$('#bsc').stopVideo();
+              //player.pauseVideo();
+                
+            }
+          })
+      },
+      error : function(error){     
+        //alert(error);
+      }
+    }).done(function(){
+        //alert(2);
+        /*$('.sliderVideo').slick({
+          autoplay: true,
+          dots: true,
+          draggable: true
+        });*/
+      }).then(function(){
+        //alert(3);
       });     
 }
 
@@ -568,13 +618,13 @@ function getPartidoProximo(argument){
             campeonato = value.campeonato;
             equipo2 = value.equipo2;
             estadio = value.estadio;
-            console.log(0);
+            
             $('.cancha-vs').append('<div> <div class="col-sm-12 col-xs-12 col-md-12 text-center"> <h4>Campeonato Ecuatoriano de Fútbol</h4> <p>Fecha: '+ fecha +' |  Hora: '+ hora +'</p> </div> <div class="name_Equipo1 aumento-left name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo1+'</div> <div class="col-sm-2 col-xs-2 col-md-2"></div> <div class="name_Equipo2 aumento-right name_Equipo col-sm-5 col-xs-5 col-md-5 text-center">'+equipo2+'</div> <div class="equipo1 col-xs-4 col-md-4 col-sm-4 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo1+'.png" /> </div> <div class="col-xs-3 col-md-3 col-sm-3 text-center centroV"> <span>VS.</span> </div> <div class="equipo2 col-xs-5 col-md-5 col-sm-5 text-center"> <img src="'+rutaimagen+'/img/widget/'+equipo2+'.png" /> </div> <div class="espacio col-md-12 col-xs-12 text-center"> <h5>Estadio <strong> '+estadio+'</strong></h5> </div> </div>');
           });
         }              
       },
       complete :function(response){
-        console.log(4);
+        //alert(1);
         $('.cancha-vs').slick({
           infinite: false,
           autoplay:true,
@@ -586,14 +636,13 @@ function getPartidoProximo(argument){
           //alert(error);
       }
 
-    }).then(function(){
-      console.log(1);
-      setTimeout(function(){
-        console.log(3);
+    }).done(function(){
+      //alert(2);
       
-       
-      },2000);
-    });    
+    }).then(function(){
+      //alert(3);
+      
+    });
 }
 
     
@@ -612,7 +661,7 @@ $(document).on('pagebeforeshow', '#proximopartido', function(){
       });
      },2000);
  });
-
+*/
 $(document).on('pagebeforeshow', '#descargas', function(){  
     $('.slider-for').css('visibility', 'hidden');
     $('.slider-nav').css('visibility', 'hidden');
@@ -638,4 +687,6 @@ $(document).on('pagebeforeshow', '#descargas', function(){
       });
      },2000);
  });
- */
+ 
+
+

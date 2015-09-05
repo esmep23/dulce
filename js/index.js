@@ -66,7 +66,9 @@ $( document ).ready(function() {
     });  
 
   }else{
+
     intervalo = setInterval(load_img, 30);
+
   }
       getNoticias();
       cargoUnidadEquipo();
@@ -460,6 +462,8 @@ function guardoDatos(){
         localStorage.setItem('token', obj);
         
         $.mobile.changePage("#principal");
+
+        getVideos();
       },
       error : function(error){     
           //alert(error);

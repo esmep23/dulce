@@ -50,7 +50,7 @@ $( document ).ready(function() {
   function load_img(){
     if(pic_num < pic_total){
       pic_num++;
-      //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
+      $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
     if(pic_num >= pic_total){
       pic_num = 0;

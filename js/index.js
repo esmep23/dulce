@@ -60,7 +60,7 @@ $( document ).ready(function() {
   var value = localStorage.getItem('token');
   if(value){
     clearInterval(intervalo);
-    //getVideos();
+    getVideos();
     $.mobile.changePage( "#principal", {
       transition: "fade"
     });  
@@ -410,6 +410,7 @@ function getVideos() {
           $.each(response,function(key,value){ 
             link = value.link;
             console.log(link);
+            //$('.sliderVideo').append('<div></div>');
             $('.sliderVideo').append('<div><iframe id="bsc'+key+'" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
           });
         }

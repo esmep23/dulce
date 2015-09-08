@@ -34,8 +34,6 @@ $( document ).ready(function() {
   var tamanPantallaHeight = $(window).height()+100;
   porcentaje = (tamanPantallaHeight * 66) /100;
   $('#video').css('width',$(window).width()+100);
-  $('object').css('width',$(window).width());
-  $('object embed').css('width',$(window).width());
   $('#video').css('height',tamanPantallaHeight-100);
   $('.ui-content').css('height',tamanPantallaHeight-100);
 

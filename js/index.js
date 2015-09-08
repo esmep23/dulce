@@ -412,7 +412,7 @@ function getVideos() {
           $.each(response,function(key,value){ 
             video_embeded = value.link;
             console.log(video_embeded);
-            $('.sliderVideo').append('<div><object><param name="movie" value="https://www.youtube.com/v/'+video_embeded+'&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="https://www.youtube.com/v/'+video_embeded+'?suggestedQuality=medium&hl=en_US&feature=player_embedded&version=3" height="150" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always"></embed></object></div>');
+            $('.sliderVideo').append('<div><object width="100%" height="150"><param name="movie" value="https://www.youtube.com/v/'+video_embeded+'&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="https://www.youtube.com/v/'+video_embeded+'?suggestedQuality=medium&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="100%" height="150"></embed></object></div>');
             //$('.sliderVideo').append('<div><iframe id="bsc'+key+'" width="100%" height="150" src="https://www.youtube.com/embed/'+link+'?rel=0&amp;controls=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
           });
         }

@@ -60,7 +60,7 @@ $( document ).ready(function() {
   var value = localStorage.getItem('token');
   if(value){
     clearInterval(intervalo);
-    //getVideos();
+    getVideos();
     $.mobile.changePage( "#principal", {
       transition: "fade"
     });  

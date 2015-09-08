@@ -419,7 +419,7 @@ function getVideos() {
       },
       complete: function(){
         $('.sliderVideo').slick({
-          autoplay: true,
+         // autoplay: true,
           dots: true,
           arrows: false,
           speed: 400

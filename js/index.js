@@ -50,7 +50,7 @@ $( document ).ready(function() {
   function load_img(){
     if(pic_num < pic_total){
       pic_num++;
-      $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
+      //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
     if(pic_num >= pic_total){
       pic_num = 0;
@@ -529,6 +529,7 @@ function cargoCampeonato(){
               arrayPuntajesPJ.push(pj);
               arrayPuntajesGD.push(gd);
               arrayPuntajesPTS.push(pts);
+
               $('.posicionesEtapa1').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li><li class="col-md-2 col-xs-2 col-sm-2 text-left">  '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+pj+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+gd+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+pts+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
               console.log(arrayPuntajesPJ);
 
@@ -539,7 +540,7 @@ function cargoCampeonato(){
                 arrayPuntajesPJ[h1var] = parseInt(arrayPuntajesPJ[h1var]) + parseInt(pj);
                 arrayPuntajesGD[h1var] = parseInt(arrayPuntajesGD[h1var]) + parseInt(gd);
                 arrayPuntajesPTS[h1var] = parseInt(arrayPuntajesPTS[h1var]) + parseInt(pts);
-                
+                //sort(arrayPuntajesPTS[h1var]);
                 $('.posicionesAcumulada').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li> <li class="col-md-2 col-xs-2 col-sm-2 text-left"> '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesPJ[h1var]+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesGD[h1var]+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+arrayPuntajesPTS[h1var]+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
                 //h1var++;
             }

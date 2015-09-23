@@ -73,6 +73,7 @@ $( document ).ready(function() {
       getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
+      cargoCampeonato2();
       $( "#tabs" ).tabs();
       $( "#tabs2" ).tabs();
       getPartidoProximo(partidoActual);
@@ -525,26 +526,57 @@ function cargoCampeonato(){
             
             if(fase == 'Serie A Fase 1'){
 
-              arrayEquipos.push(equipo);
-              arrayPuntajesPJ.push(pj);
-              arrayPuntajesGD.push(gd);
-              arrayPuntajesPTS.push(pts);
+             // arrayEquipos.push(equipo);
+             // arrayPuntajesPJ.push(pj);
+              //arrayPuntajesGD.push(gd);
+             // arrayPuntajesPTS.push(pts);
 
               $('.posicionesEtapa1').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li><li class="col-md-2 col-xs-2 col-sm-2 text-left">  '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+pj+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+gd+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+pts+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
-              console.log(arrayPuntajesPJ);
+            //  console.log(arrayPuntajesPJ);
 
             }
             if(fase == 'Serie A Fase 2'){
-                var h1var = arrayEquipos.indexOf(equipo);
+               // var h1var = arrayEquipos.indexOf(equipo);
                 $('.posicionesEtapa2').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li><li class="col-md-2 col-xs-2 col-sm-2 text-left">  '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+pj+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+gd+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+pts+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
-                arrayPuntajesPJ[h1var] = parseInt(arrayPuntajesPJ[h1var]) + parseInt(pj);
-                arrayPuntajesGD[h1var] = parseInt(arrayPuntajesGD[h1var]) + parseInt(gd);
-                arrayPuntajesPTS[h1var] = parseInt(arrayPuntajesPTS[h1var]) + parseInt(pts);
+               // arrayPuntajesPJ[h1var] = parseInt(arrayPuntajesPJ[h1var]) + parseInt(pj);
+                //arrayPuntajesGD[h1var] = parseInt(arrayPuntajesGD[h1var]) + parseInt(gd);
+                //arrayPuntajesPTS[h1var] = parseInt(arrayPuntajesPTS[h1var]) + parseInt(pts);
                 //sort(arrayPuntajesPTS[h1var]);
-                $('.posicionesAcumulada').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li> <li class="col-md-2 col-xs-2 col-sm-2 text-left"> '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesPJ[h1var]+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesGD[h1var]+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+arrayPuntajesPTS[h1var]+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
+                //$('.posicionesAcumulada').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li> <li class="col-md-2 col-xs-2 col-sm-2 text-left"> '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesPJ[h1var]+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+arrayPuntajesGD[h1var]+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+arrayPuntajesPTS[h1var]+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
                 //h1var++;
             }
 
+
+
+             
+          });
+        }              
+      },
+      error : function(error){     
+          //alert(error);
+      }
+    });    
+}
+
+function cargoCampeonato2(){
+
+    $.ajax({
+      url: direccion+'actions/getEstadisticas2.php',
+      type: "GET",
+      cache: true,
+      dataType: "json",
+      success: function(response){  
+        if(response!=null && response!='' && response!='[]'){ 
+          $.each(response,function(key,value){ 
+
+            equipo = value.equipo;
+            pj = value.pj;
+            gd = value.gd;
+            pts = value.pts;
+            
+            
+              $('.posicionesAcumulada').append('<li class="col-md-3 col-xs-3 col-sm-3 text-right"> <img src="'+rutaimagen+'/img/widget/'+equipo.toLowerCase()+'.png" /></li><li class="col-md-2 col-xs-2 col-sm-2 text-left">  '+equipo+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+pj+'</li> <li class="col-md-2 col-xs-2 col-sm-2 text-center"> '+gd+'</li> <li class="col-md-3 col-xs-3 col-sm-3 text-center"> '+pts+'</li><li class="rayaSepara col-md-12 col-xs-12 col-sm-12"></li>');
+            
              
           });
         }              

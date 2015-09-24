@@ -50,7 +50,7 @@ $( document ).ready(function() {
   function load_img(){
     if(pic_num < pic_total){
       pic_num++;
-      //$('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
+      $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
     if(pic_num >= pic_total){
       pic_num = 0;
@@ -59,7 +59,7 @@ $( document ).ready(function() {
 
   var value = localStorage.getItem('token');
   if(value){
-    //clearInterval(intervalo);
+    clearInterval(intervalo);
     getVideos();
     $.mobile.changePage( "#principal", {
       transition: "fade"
@@ -67,7 +67,7 @@ $( document ).ready(function() {
 
   }else{
 
-    //intervalo = setInterval(load_img, 30);
+    intervalo = setInterval(load_img, 30);
 
   }
       getNoticias();

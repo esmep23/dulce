@@ -57,7 +57,9 @@ $( document ).ready(function() {
     }
   } /*load_img*/
 
-  var value = localStorage.getItem('token');
+  /*
+  //token
+  //var value = localStorage.getItem('token');
   if(value){
     clearInterval(intervalo);
     getVideos();
@@ -67,9 +69,10 @@ $( document ).ready(function() {
 
   }else{
 
-    intervalo = setInterval(load_img, 30);
+    */intervalo = setInterval(load_img, 30);/*
 
   }
+  */
       getNoticias();
       cargoUnidadEquipo();
       cargoCampeonato();
@@ -116,7 +119,7 @@ $( document ).ready(function() {
     $('.cancha-vs').css('visibility', 'hidden');
     $('.slider-for').css('visibility', 'hidden');
     $('.slider-nav').css('visibility', 'hidden');
- 
+
 
     //SONIDOS
       $( ".play_button" ).click(function() {
@@ -638,6 +641,12 @@ function getPartidoProximo(argument){
 /*********************************************************************/
 /* FUNCIONES */
 /*********************************************************************/
+
+$(document).on('pageshow', '#principal', function(){ 
+
+    getVideos();
+    clearInterval(intervalo);
+});
 
 $(document).on('pagebeforeshow', '#proximopartido', function(){  
     //$('.sliderVideo').empty();

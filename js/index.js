@@ -46,12 +46,39 @@ $( document ).ready(function() {
   //video inicial
   var pic_num = 1;
   var pic_total = 602;
+
+  /*detect*/
+  /**
+   * Determine the mobile operating system.
+   * This function either returns 'iOS', 'Android' or 'unknown'
+   *
+   * @returns {String}
+   */
+  function getMobileOperatingSystem() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
+    {
+      return 'iOS';
+
+    }
+    else if( userAgent.match( /Android/i ) )
+    {
+
+      return 'Android';
+    }
+    else
+    {
+      return 'unknown';
+    }
+  }
+  /*detect*/
   
 
   function load_img(){
     if(pic_num < pic_total){
       pic_num++;
-      $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
+     // $('#video').attr('src', "frame/barcelona_"+pad(pic_num, 5)+".jpg");
     }
     if(pic_num >= pic_total){
       pic_num = 0;
